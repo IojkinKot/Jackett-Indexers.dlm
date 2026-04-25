@@ -17,7 +17,7 @@ with open('indexers.json', encoding='utf-8') as json_file:
         gid = cid.capitalize()
         name = ind["name"]
         site = ind["site_link"]
-        className = f"SynoDLMSearch{gid}Jackett"
+        className = f"SynoDLMSearch{gid}Jackett".replace("-", "_")
 
         info = {
             "name": cid,
@@ -168,5 +168,3 @@ class """ + className + """
         with tarfile.open(f'dlm/{gid}-Jackett.dlm', 'w:gz') as tar:
             tar.addfile(tarInfo, io.BytesIO(infoStr.encode('utf8')))
             tar.addfile(tarSearch, io.BytesIO(searchCode.encode('utf8')))
-
-        print(f"- [{name}](https://github.com/DeXP/Jackett-Indexers.dlm/raw/master/dlm/{gid}-Jackett.dlm)")
