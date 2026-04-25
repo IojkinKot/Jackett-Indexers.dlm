@@ -33,7 +33,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ackett-indexers-${{ github.ref_name }}.zip
+            jackett-indexers-${{ github.ref_name }}.zip
           draft: false
           prerelease: false
         env:
