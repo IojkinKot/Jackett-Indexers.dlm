@@ -25,11 +25,15 @@ jobs:
       - name: Run build script
         run: python generate.py
 
+      - name: Create ZIP archive
+        run: |
+          zip -r jackett-indexers-${{ github.ref_name }}.zip dlm/*.dlm
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dlm/*.dlm
+            ackett-indexers-${{ github.ref_name }}.zip
           draft: false
           prerelease: false
         env:
